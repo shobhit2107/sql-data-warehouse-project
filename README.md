@@ -24,3 +24,11 @@ Develop SQL-based analytics to deliver detailed insights into:
 •	Product Performance
 •	Sales Trends
 These insights empower stakeholders with key business metrics, enabling strategic decision-making.
+
+
+**License**
+
+This project is under MIT license. You are free to use, modify and share this project with proper attribution.
+
+**About Me**
+This is Shobhit, an Aerospace Engineer with deep interest and passion to learn and explore the interesting technological fields and domains.
