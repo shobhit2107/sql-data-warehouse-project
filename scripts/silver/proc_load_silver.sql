@@ -130,15 +130,15 @@ BEGIN
 			sls_ord_num,
 			sls_prd_key,
 			sls_cust_id,
-			CASE WHEN sls_order_dt =0 OR LEN(sls_order_dt) ! = 8 THEN NULL
+			CASE WHEN sls_order_dt =0 OR LEN(sls_order_dt) != 8 THEN NULL
 				 ELSE CAST(CAST(sls_order_dt AS VARCHAR) AS DATE)
 			END AS sls_order_dt,
 	
-			CASE WHEN sls_ship_dt =0 OR LEN(sls_ship_dt) ! = 8 THEN NULL
+			CASE WHEN sls_ship_dt =0 OR LEN(sls_ship_dt) != 8 THEN NULL
 				 ELSE CAST(CAST(sls_ship_dt AS VARCHAR) AS DATE)
 			END AS sls_ship_dt,
 
-			CASE WHEN sls_due_dt =0 OR LEN(sls_due_dt) ! = 8 THEN NULL
+			CASE WHEN sls_due_dt =0 OR LEN(sls_due_dt) != 8 THEN NULL
 				 ELSE CAST(CAST(sls_due_dt AS VARCHAR) AS DATE)
 			END AS sls_due_dt,
 
@@ -232,9 +232,10 @@ BEGIN
 	
 		SET @batch_end_time =GETDATE();
 		PRINT '================================';
-		PRINT 'Loading SIlver Layer is complete';
+		PRINT 'Loading Silver Layer is complete';
 		PRINT 'Total Load Duration' + CAST(DATEDIFF(SECOND, @batch_start_time, @batch_end_time) AS NVARCHAR) + 'seconds' 
 		PRINT ' ===============================';
+	
 	END TRY
 	BEGIN CATCH
 		PRINT '================================';
