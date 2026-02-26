@@ -23,8 +23,9 @@ Usage Notes:
 -- ===========================================================================
 -- Check for NULLs or Duplicates in Primary Key
 -- Expectation: No Results
-SELECT cst_id
-  COUNT(*)
+SELECT 
+   cst_id,
+   COUNT(*)
 FROM silver.crm_cust_info
 GROUP BY cst_id
 HAVING COUNT(*) > 1 or cst_id IS NULL;
@@ -85,10 +86,10 @@ WHERE prd_end_dt < prd_start_dt;
 -- Check for Invalid Dates
 -- Expectation: No Invalid dates
 SELECT 
-  NULL IF(sls_due_dt, 0) AS sls_due_dt
+  NULLIF(sls_due_dt, 0) AS sls_due_dt
 FROM silver.crm_sales_details
-WHERE sls_due_date <= 0
-    OR LEN(sls_due_dt <= 0
+WHERE sls_due_dt <= 0
+    OR LEN(sls_due_dt) != 8
     OR sls_due_dt > 20500101
     OR sls_due_dt < 19000101;
 
@@ -96,7 +97,7 @@ WHERE sls_due_date <= 0
 -- Expectation: No Result
 SELECT 
   *
-FROM silver.crmsales_details
+FROM silver.crm_sales_details
 WHERE sls_order_dt > sls_ship_dt
   OR sls_order_dt > sls_due_dt;
 
